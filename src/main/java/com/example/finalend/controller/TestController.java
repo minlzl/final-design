@@ -1,8 +1,10 @@
 package com.example.finalend.controller;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
+import cn.dev33.satoken.annotation.SaIgnore;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.finalend.annotation.ApiRestController;
+import com.example.finalend.annotation.RedisLimit;
 import com.example.finalend.async.impl.AsyncServiceImpl;
 import com.example.finalend.vo.Resp;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,8 @@ public class TestController {
     AsyncServiceImpl asyncService;
 
     @GetMapping("/test")
+    @SaIgnore
+    @RedisLimit
     public Resp<Object> test() {
         return Resp.success();
     }
